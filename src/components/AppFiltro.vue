@@ -172,6 +172,10 @@ export default {
       return []
     }
   },
+mounted() {
+  this.date1 =this.$route.query.date1;
+   this.date2=this.$route.query.date2
+},
 
   methods: {
     async getDataBySlider() {
@@ -197,6 +201,8 @@ export default {
         path: "/",
         query: { date1: min, date2: max },
       });
+        this.date1 =this.$route.query.date1;
+   this.date2=this.$route.query.date2
 
       this.timer = setTimeout(() => {
         this.$q.loading.hide();
