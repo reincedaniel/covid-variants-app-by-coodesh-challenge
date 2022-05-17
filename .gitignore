@@ -5,8 +5,8 @@ node_modules
 # Quasar core related directories
 .quasar
 /dist
-.development.env
-.production.env
+#.development.env
+#.production.env
 
 # Cordova related directories and files
 /src-cordova/node_modules

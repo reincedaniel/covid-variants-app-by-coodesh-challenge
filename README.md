@@ -5,7 +5,7 @@
 > 
 ---
 > 
-> LINK PARA TESTE: [Covid Variants App](https://coodesh.com/)
+> LINK PARA TESTE: [Covid Variants App](https://covid-variant.netlify.app/)
 >
 > 
 
