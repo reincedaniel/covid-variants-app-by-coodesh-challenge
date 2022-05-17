@@ -1,12 +1,7 @@
 <template>
   <div>
-    <q-expansion-item
-      style="border-radius: 23px"
-      class="bg-grey-4 q-mx-md q-mt-md text-bold text-grey-9"
-      v-model="expanded"
-      icon="policy"
-      label="Opções de Pesquisas"
-    >
+    <q-expansion-item style="border-radius: 23px" class="bg-grey-4 q-mx-md q-mt-md text-bold text-grey-9"
+      v-model="expanded" icon="policy" label="Opções de Pesquisas">
       <q-card>
         <q-card-section class="bg-grey-2">
           <div class="row q-col-gutter-md">
@@ -14,31 +9,18 @@
               <div class="row">
                 <div class>
                   <q-btn icon="event" round color="grey-8">
-                    <q-popup-proxy
-                      @before-show="updateProxy1"
-                      transition-show="scale"
-                      transition-hide="scale"
-                    >
-                      <q-date
-                        color="grey-8"
-                        :locale="locale"
-                        v-model="proxyDate1"
-                        mask="YYYY-MM-DD"
-                      >
+                    <q-popup-proxy @before-show="updateProxy1" transition-show="scale" transition-hide="scale">
+                      <q-date v-if="disponivelDate" default-view="Years" navigation-min-year-month="2019/09" navigation-max-year-month="2023/12" color="grey-8" :locale="locale" v-model="proxyDate1"
+                        mask="YYYY-MM-DD" :options="optionsDate">
                         <div class="row items-center justify-end q-gutter-sm">
-                          <q-btn
-                            label="Cancelar"
-                            color="red"
-                            flat
-                            v-close-popup
-                          />
-                          <q-btn
-                            label="Confirmar"
-                            color="primary"
-                            flat
-                            @click="save1"
-                            v-close-popup
-                          />
+                          <q-btn label="Cancelar" color="red" flat v-close-popup />
+                          <q-btn label="Confirmar" color="primary" flat @click="save1" v-close-popup />
+                        </div>
+                      </q-date>
+                      <q-date default-view="Years" navigation-min-year-month="2019/09" navigation-max-year-month="2023/12" v-else color="grey-8" :locale="locale" v-model="proxyDate1" mask="YYYY-MM-DD">
+                        <div class="row items-center justify-end q-gutter-sm">
+                          <q-btn label="Cancelar" color="red" flat v-close-popup />
+                          <q-btn label="Confirmar" color="primary" flat @click="save1" v-close-popup />
                         </div>
                       </q-date>
                     </q-popup-proxy>
@@ -47,30 +29,21 @@
                 <div class="col q-mt-sm q-ml-xs q-mr-md">
                   <p>
                     De:
-                    <span class="text-bold text-grey-9"
-                      >{{
+                    <span class="text-bold text-grey-9">{{
                         date1 && date1.split("-")[2]
                           ? date1.split("-")[2]
                           : "--"
-                      }}/{{
-                        date1 && date1.split("-")[1]
-                          ? date1.split("-")[1]
-                          : "--"
-                      }}/{{
-                        date1 && date1.split("-")[0]
-                          ? date1.split("-")[0]
-                          : "--"
-                      }}</span
-                    >
-                    <q-btn
-                      size="sm"
-                      rounded
-                      @click="date1 = null"
-                      icon="label_off"
-                      class="q-ml-sm"
-                      color="grey-8"
-                      label
-                    />
+                    }}/{{
+    date1 && date1.split("-")[1]
+      ? date1.split("-")[1]
+      : "--"
+}}/{{
+    date1 && date1.split("-")[0]
+      ? date1.split("-")[0]
+      : "--"
+}}</span>
+                    <q-btn size="sm" rounded @click="date1 = null" icon="label_off" class="q-ml-sm" color="grey-8"
+                      label />
                   </p>
                 </div>
               </div>
@@ -80,32 +53,20 @@
               <div class="row">
                 <div class>
                   <q-btn icon="event" round color="red-9">
-                    <q-popup-proxy
-                      @before-show="updateProxy2"
-                      transition-show="scale"
-                      transition-hide="scale"
-                    >
-                      <q-date
-                        color="red-9"
-                        v-model="proxyDate2"
-                        id="Data2"
-                        mask="YYYY-MM-DD"
-                        :locale="locale"
-                      >
+                    <q-popup-proxy @before-show="updateProxy2" transition-show="scale" transition-hide="scale">
+                      <q-date default-view="Years" navigation-min-year-month="2019/09" navigation-max-year-month="2023/12"
+                        v-if="disponivelDate" color="red-9" v-model="proxyDate2" id="Data2" mask="YYYY-MM-DD"
+                        :locale="locale" :options="optionsDate">
                         <div class="row items-center justify-end q-gutter-sm">
-                          <q-btn
-                            label="Cancelar"
-                            color="red"
-                            flat
-                            v-close-popup
-                          />
-                          <q-btn
-                            label="Confirmar"
-                            color="primary"
-                            flat
-                            @click="save2"
-                            v-close-popup
-                          />
+                          <q-btn label="Cancelar" color="red" flat v-close-popup />
+                          <q-btn label="Confirmar" color="primary" flat @click="save2" v-close-popup />
+                        </div>
+                      </q-date>
+                      <q-date default-view="Years" v-else navigation-min-year-month="2019/09" navigation-max-year-month="2023/12"
+                        color="red-9" v-model="proxyDate2" id="Data2" mask="YYYY-MM-DD" :locale="locale">
+                        <div class="row items-center justify-end q-gutter-sm">
+                          <q-btn label="Cancelar" color="red" flat v-close-popup />
+                          <q-btn label="Confirmar" color="primary" flat @click="save2" v-close-popup />
                         </div>
                       </q-date>
                     </q-popup-proxy>
@@ -114,33 +75,28 @@
                 <div class="col q-mt-sm q-ml-xs q-mr-md">
                   <p>
                     Até:
-                    <span class="text-bold text-grey-9"
-                      >{{
+                    <span class="text-bold text-grey-9">{{
                         date2 && date2.split("-")[2]
                           ? date2.split("-")[2]
                           : "--"
-                      }}/{{
-                        date2 && date2.split("-")[1]
-                          ? date2.split("-")[1]
-                          : "--"
-                      }}/{{
-                        date2 && date2.split("-")[0]
-                          ? date2.split("-")[0]
-                          : "--"
-                      }}</span
-                    >
-                    <q-btn
-                      rounded
-                      @click="date2 = null"
-                      size="sm"
-                      icon="label_off"
-                      class="q-ml-sm"
-                      color="red-8"
-                      label
-                    />
+                    }}/{{
+    date2 && date2.split("-")[1]
+      ? date2.split("-")[1]
+      : "--"
+}}/{{
+    date2 && date2.split("-")[0]
+      ? date2.split("-")[0]
+      : "--"
+}}</span>
+                    <q-btn rounded @click="date2 = null" size="sm" icon="label_off" class="q-ml-sm" color="red-8"
+                      label />
                   </p>
                 </div>
               </div>
+            </div>
+            <div>
+              <q-checkbox size="50px" left-label class="text-subtitle1 text-weight-light" color="light-blue"
+                v-model="disponivelDate" label="Apenas datas disponíveis" />
             </div>
           </div>
 
@@ -148,34 +104,17 @@
             <span class="text-grey-6 text-weight-light">Resultados: </span>
             <span class="text-light-blue-6 q-ml-sm text-weight-regular">
               {{
-                $store.getters.LIST_DATA
-                  ? $store.getters.LIST_DATA.length
-                  : "--"
+                  $store.getters.LIST_DATA
+                    ? $store.getters.LIST_DATA.length
+                    : "--"
               }}
-              Dados</span
-            >
+              Dados</span>
             <q-space />
             <div class="pull-right">
-              <q-btn
-                rounded
-                size="md"
-                color="grey-6"
-                class="q-mb-md q-mr-md"
-                style="top: 0"
-                label="Restaurar"
-                icon="restore_page"
-                @click="restaurar()"
-              />
-              <q-btn
-                rounded
-                size="md"
-                color="blue-6"
-                class="q-mb-md"
-                style="top: 0"
-                label="Pesquisar"
-                icon="search"
-                @click="filtroPesquisa()"
-              />
+              <q-btn rounded size="md" color="grey-6" class="q-mb-md q-mr-md" style="top: 0" label="Restaurar"
+                icon="restore_page" @click="restaurar()" />
+              <q-btn rounded size="md" color="blue-6" class="q-mb-md" style="top: 0" label="Pesquisar" icon="search"
+                @click="filtroPesquisa()" />
             </div>
           </div>
         </q-card-section>
@@ -185,18 +124,8 @@
     <div class="row flex flex-center">
       <span class="text-grey-6 text-caption text-bold">Evolunção:</span>
       <div class="col-11 q-px-md">
-        <q-range
-          class="q-mt-xl"
-          v-model="model"
-          color="grey-9"
-          markers
-          track-size="10px"
-          thumb-color="light-blue"
-          :marker-labels="fnMarkerLabel"
-          :min="1"
-          :max="4"
-          @input="getDataBySlider()"
-        />
+        <q-range class="q-mt-xl" v-model="model" color="grey-9" markers track-size="10px" thumb-color="light-blue"
+          :marker-labels="fnMarkerLabel" :min="1" :max="4" @input="getDataBySlider()" />
       </div>
     </div>
 
@@ -211,6 +140,7 @@ export default {
 
   data() {
     return {
+      disponivelDate: false,
       objMarkerLabel: { 1: "2019", 2: { label: "2020" }, 3: "2021", 4: "2020" },
       locale: {
         days: "Domingo_Segunda_Terça_Quarta_Quinta_Sexta_Sábado".split("_"),
@@ -231,9 +161,16 @@ export default {
       proxyDate2: "",
       model: {
         min: 1,
-        max: 2,
+        max: 4,
       },
     };
+  },
+  computed: {
+    optionsDate() {
+      if (this.disponivelDate)
+        return this.$store.getters.LIST_DATES ? this.$store.getters.LIST_DATES.map(x => x.split('-').join('/')) : []
+      return []
+    }
   },
 
   methods: {
@@ -370,11 +307,11 @@ export default {
     },
     getDataForChartTwoDates(date1, date2) {
       try {
-      } catch (error) {}
+      } catch (error) { }
     },
     getDataForChartOneDate(date) {
       try {
-      } catch (error) {}
+      } catch (error) { }
     },
     updateProxy1() {
       this.proxyDate1 = this.date1;
@@ -394,4 +331,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+</style>

@@ -27,12 +27,15 @@ export default {
       countriesTopoJson,
       countriesTopoJson.objects.countries
     ).features,
+    dates:null
   },
   getters: {
     countries: (state) => {
       return state.countries;
     },
-
+    LIST_DATES: (state) => {
+      return state.dates;
+    },
     LIST_DATA: (state) => {
       return state.data;
     },
@@ -45,6 +48,9 @@ export default {
     },
   },
   mutations: {
+    SET_DATES: (state, payload) => {
+      state.dates = payload;
+    },
     SET_DATA: (state, payload) => {
       state.data = payload;
     },
@@ -119,7 +125,16 @@ export default {
         ...new Set(options.getters.LIST_COVID_VARIANTS.map((x) => x.variant)),
       ];
       options.commit("SET_VARIANTS", groupByVariants);
+      options.dispatch('GET_DATES')
       localStorage.setItem("LIST_VARIANTS", JSON.stringify(groupByVariants));
+    },
+
+    GET_DATES(options) {
+      const groupByDates = [
+        ...new Set(options.getters.LIST_COVID_VARIANTS.map((x) => x.date)),
+      ];
+      options.commit("SET_DATES", groupByDates);
+      localStorage.setItem("LIST_DATES", JSON.stringify(groupByDates));
     },
   },
 };
