@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  app:
+    container_name: covid_variants_challenge_app
+    ports: 
+    - 8032:3000
+    restart: always
+    image: coodesh/covid_variants_challenge_app:1.0
+    restart: always
+    environment:
+      - SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJobnNvYWtqd3d6bXBlaXloam11Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2NTI0MzE3MjgsImV4cCI6MTk2ODAwNzcyOH0.lSaJAh33eJznqggnMbWKi-fRy9XUAS8Qx2k2tQizCo8
+      - SUPABASE_URL=https://bhnsoakjwwzmpeiyhjmu.supabase.co
+

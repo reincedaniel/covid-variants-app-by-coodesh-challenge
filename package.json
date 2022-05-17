@@ -1,0 +1,48 @@
+{
+  "name": "covid-variants-app",
+  "version": "0.0.1",
+  "description": "Challenge Coodesh",
+  "productName": "Covid Variants App",
+  "author": "Lourenço Carlos <reincedaniel@gmail.com>",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0",
+    "test:e2e": "cross-env E2E_TEST=true start-test \"quasar dev\" http-get://localhost:8080 \"cypress open\"",
+    "test:e2e:ci": "cross-env E2E_TEST=true start-test \"quasar dev\" http-get://localhost:8080 \"cypress run\""
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.0.0",
+    "@supabase/supabase-js": "^1.35.3",
+    "axios": "^0.21.1",
+    "chart.js": "^3.7.1",
+    "chartjs-chart-geo": "^3.5.2",
+    "core-js": "^3.6.5",
+    "jquery": "^3.6.0",
+    "jvectormap": "^2.0.4",
+    "quasar": "^1.0.0",
+    "vue-i18n": "^8.0.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@quasar/app": "^2.0.0",
+    "@quasar/quasar-app-extension-dotenv": "^1.1.0",
+    "@quasar/quasar-app-extension-testing-e2e-cypress": "^3.1.2",
+    "eslint-plugin-cypress": "^2.11.1"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}
