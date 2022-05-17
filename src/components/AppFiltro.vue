@@ -250,7 +250,7 @@ export default {
         message:
           'A construção do <b> Mapa Coroplético</b> está em processo.<br/><span class="text-white text-weight-bold">Aguarde ...</span>',
       });
-      await this.$store.dispatch("ADD_COVID_VARIANTS");
+      /* await this.$store.dispatch("ADD_COVID_VARIANTS"); */
       await this.$store.dispatch("GET_VARIANTS");
       await this.$store.dispatch("GET_COVID_VARIANTS_FILTER", {
         date1: min,
@@ -281,7 +281,7 @@ export default {
         message:
           'A construção do <b> Mapa Coroplético</b> está em processo.<br/><span class="text-white text-weight-bold">Aguarde ...</span>',
       });
-      await this.$store.dispatch("ADD_COVID_VARIANTS");
+      /* await this.$store.dispatch("ADD_COVID_VARIANTS"); */
       await this.$store.dispatch("GET_VARIANTS");
       await this.$store.dispatch("GET_COVID_VARIANTS_FILTER", {
         date1: this.date1,
@@ -323,7 +323,7 @@ export default {
             message:
               'A construção do <b> Mapa Coroplético</b> está em processo.<br/><span class="text-white text-weight-bold">Aguarde ...</span>',
           });
-          await this.$store.dispatch("ADD_COVID_VARIANTS");
+          /* await this.$store.dispatch("ADD_COVID_VARIANTS"); */
           await this.$store.dispatch("GET_VARIANTS");
           await this.$store.dispatch("GET_COVID_VARIANTS_FILTER", {
             date1: this.date1,
@@ -351,7 +351,7 @@ export default {
           message:
             'A construção do <b> Mapa Coroplético</b> está em processo.<br/><span class="text-white text-weight-bold">Aguarde ...</span>',
         });
-        await this.$store.dispatch("ADD_COVID_VARIANTS");
+        /* await this.$store.dispatch("ADD_COVID_VARIANTS"); */
         await this.$store.dispatch("GET_VARIANTS");
         await this.$store.dispatch("GET_COVID_VARIANTS_FILTER", {
           date1: this.date1,
